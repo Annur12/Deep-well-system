@@ -1,0 +1,579 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+  }
+
+  .sidebar a {
+    padding: 15px 20px;
+    text-decoration: none;
+    display: block;
+    transition: 0.5s;
+  }
+
+  .sidebar a, .dropbtn {
+    font-size: 16px;
+    color: #707070;
+  }
+
+  .icon {
+    color: #707070;
+  }
+
+  i {
+    margin-right: 8px;
+  }
+
+  .sidebar a:hover {
+    background-color: #4070f4;
+  }
+
+  .sidebar a:hover,
+  .icon:hover, 
+  .dropbtn:hover {
+    color: #fff;
+  }
+
+  .open-btn {
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    padding: 5px 10px;
+    border: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1002;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 16px;
+    transition: margin-left 0.5s;
+  }
+
+  .dropbtn {
+    display: block;
+    width: 210px;
+    color: #707070;
+    padding: 15px 20px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+
+  .dropbtn:hover {
+    background-color: #4070f4;
+  }
+  
+  
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 180px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-left: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: #707070;
+    padding: 8px 18px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .dropdown a:hover {
+    background-color: #4070f4;
+  }
+  
+  .show {display: block;}
+
+  .locate {
+    background-color: red;
+    z-index: 1003;
+  }
+
+  @media screen and (max-width: 600px) {
+    .sidebar {
+      left: 0;
+    }
+
+    .content {
+      margin-left: 250px;
+    }
+  }
+
+  #map {
+    height: 100vh;
+    width: 100%;
+  }
+
+  .content h2 {
+    text-align: center;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.barangay-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.81);
+    transition: 0.3s ease;
+}
+
+.barangay-button:hover {
+    background-color: #45a049;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+    form {
+        max-width: 100%;
+    }
+}
+
+/* Add the following styles to your existing admin.css */
+
+.table-container {
+  position: relative;
+  margin: 20px auto;
+  max-width: 1100px; /* Adjust the max-width as needed */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+th, td {
+  font-size: 14px;
+  padding: 6px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f0f0f0;
+}
+
+.edit-icon {
+  color: blue;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.edit-icon:hover {
+  color: darkblue;
+}
+
+.delete-icon {
+  color: red;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.delete-icon:hover {
+  color: darkred;
+}
+
+.delete-all-btn {
+  color: #707070;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.delete-all-btn:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
+/* Add these styles to your existing CSS file */
+
+.pagination-button {
+  display: inline-block;
+    padding: 8px 16px;
+    text-decoration: none;
+    background-color: #f2f2f2;
+    color: #707070;
+    border-radius: 4px;
+    margin-right: 10px;
+    margin-top: 20px; /* Add space from the top */
+    position: absolute;
+    right: 0; /* Align to the right */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.pagination-button:hover {
+  background-color: #e6e4e4;
+}
+
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .table-container {
+      margin: 20px auto;
+  }
+
+  table {
+      border: 1px solid #ddd;
+  }
+
+  th, td {
+      width: 100%;
+      display: block;
+  }
+
+  th, td {
+      text-align: left;
+  }
+}
+
+.marker-popup {
+  max-width: 200px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.marker-popup b {
+  margin-top: 5px;
+  display: inline-block;
+}
+
+.marker-popup .top {
+  margin-top: 5px;
+}
+
+.marker-popup span {
+  text-transform: capitalize;
+}
+
+.delete-marker {
+  background-color: #CB2B3E;
+}
+
+.confirm-marker {
+  background-color: #2AAD27;
+}
+
+.confirm-marker,
+.delete-marker {
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 4px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.confirm-marker:hover {
+  opacity: 0.9;
+}
+
+.delete-marker:hover{
+  opacity: 0.9;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 600px) {
+  .marker-popup {
+    max-width: 100%;
+  }
+
+  .confirm-marker,
+  .delete-marker {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+.marker-container {
+  background-color: #ffff;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  z-index: 1002;
+}
+
+.marker-divider {
+  display: flex;
+  align-items: baseline; /* Align along the baseline */
+  margin-bottom: 5px;
+  margin-right: 25px;
+}
+
+.marker-color {
+  color: #000;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.marker-green {
+  background-color: #2aad27;
+}
+
+.marker-red {
+  background-color: #cb2b3e;
+}
+
+.marker-black {
+  background-color: #3d3d3d;
+}
+
+.marker-container p {
+  margin: 0;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+
+/* Existing styles remain unchanged */
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-section {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.dashboard-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+
+  .dashboard-section {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    margin-bottom: 20px;
+  }
+}
+
+.card-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #007BFF;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-value {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+@media print {
+  .dashboard, .hamburger-icon, #printReportButton {
+      display: none !important;
+  }
+
+  .modal-content {
+      margin: 10% auto;
+  }
+
+  /* Show only the table and its data when printing */
+  body > *:not(#reportModal):not(#reportTable) {
+      display: none;
+  }
+
+  #reportTable {
+      display: table;
+  }
+}
+
+/* ... (existing styles) */
+
+/* Additional styles for the table in the report */
+#reportTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#reportTable th, #reportTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+#reportTable th {
+  background-color: #f2f2f2;
+}
+
+.modal-content {
+  position: relative;
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add these styles to your existing CSS file */
+
+/* Styles for the search button */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}

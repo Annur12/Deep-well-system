@@ -1,0 +1,390 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+#map {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    touch-action: none;
+    z-index: -1;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 64, 128, 0.7);
+    padding: 15px;
+    color: #fff;
+}
+
+.header a {
+    padding: 5px 10px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header p {
+    font-size: 18px;
+    margin-right: 40px;
+}
+
+.welcome-container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin-top: 0px;
+}
+
+.welcome-message {
+    font-size: 35px;
+    margin-top: 20px;
+    color: #007BFF;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.modal-content {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* Add this to position close button relative to modal */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+}
+
+.close:hover {
+    color: red; /* Change color on hover for better visibility */
+}
+
+.login-container {
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.submit {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit:hover {
+    background-color: #0056b3;
+}
+
+#locate-me-container {
+    position: absolute;
+    top: 70px;
+    left: 15px;
+    z-index: 2; /* Ensure it's above the map */
+}
+
+#popup-form {
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+
+
+#popup-form button:hover {
+    background-color: #45a049;
+}
+
+#popup-form input, #popup-form label {
+    margin-top: 0;
+}
+
+#popup-form input {
+    padding: 8px 30px 6px 4px;
+}
+
+#popup-form select {
+    margin-left: 10px;
+    padding: 6px 20px;
+}
+
+#popup-form button {
+    padding: 6px 15px;
+    background-color: #45a049;
+    border: none;
+    color: #fff;
+    border-radius: 60px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+#popup-form button:hover {
+    opacity: 0.9;
+}
+
+.marker-popup {
+    max-width: 400px;
+    padding: 15px 0;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.marker-popup span {
+    text-transform:uppercase;
+}
+
+.marker-popup b {
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.marker-popup .status {
+    color: red;
+}
+
+/* Adjusted styles for improved design and color */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+    background-color: #3498db; /* Blue color for the user-dropdown */
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: #fff; /* Text color for better contrast */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #2980b9; /* Darker blue color for the dropdown */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    min-width: 160px;
+    z-index: 1;
+    border-radius: 5px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: top center;
+}
+
+.dropdown-content a {
+    color: #fff; /* Text color for dropdown items */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #1f618d; /* Darker color on hover for better feedback */
+    transition: background-color 0.3s ease;
+}
+
+.user-dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+}
+
+.user-dropdown span {
+    text-transform: capitalize;
+}
+
+/* Styles for the Edit Account form */
+.edit-account-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 3px;
+}
+
+/* Add the following style for horizontal alignment */
+.form-group.horizontal {
+    display: flex;
+    align-items: center;
+}
+
+.form-group.horizontal label {
+    margin-right: 10px;
+}
+
+.form-group.horizontal input {
+    flex: 1;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px; /* Adding space between form fields and buttons */
+}
+
+button {
+    width: 48%; /* Adjusting button width */
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.wrapper {
+    width: 300px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.select-btn, .options li {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+}
+
+.select-btn {
+    background: #fff;
+    height: 40px;
+    padding: 0 20px;
+    font-size: 16px;
+    border-radius: 7px;
+    justify-content: space-between;
+}
+.select-btn i {
+    font-size: 20px;
+    transition: transform 0.3s;
+}
+
+.wrapper.active .select-btn i {
+    transform: rotate(-180deg);
+}
+
+.content {
+    display: none;
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 7px;
+    background: #fff;
+}
+
+.wrapper.active .content {
+    display: block;
+}
+
+.content .search {
+    position: relative;
+}
+
+.search i {
+    position: absolute;
+    left: 15px;
+    line-height: 53px;
+    font-size: 20px;
+}
+
+.search input {
+    height: 40px;
+    width: 100%;
+    font-size: 17px;
+    outline: none;
+    padding: 0 15px 0 43px;
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+}
+
+.content .options {
+    margin-top: 20px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.options::-webkit-scrollbar {
+    width: 7px;
+}
+.options::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 25px;
+}
+.options::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 25px;
+}
+
+.options li {
+    height: 40px;
+    border-radius: 5px;
+    padding: 0 11px;
+    font-size: 16px;
+}
+
+.options li:hover {
+    background: #f2f2f2;
+}
